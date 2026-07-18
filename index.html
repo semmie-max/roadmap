@@ -238,7 +238,7 @@
   const phrases = [
     "everyone who makes events happen",
     "ticketing, travel, and payments",
-    "the entire event ecosystem"
+    "the entire event ecosystemm"
   ];
   
   let phraseIndex = 0;
@@ -491,25 +491,27 @@ document.addEventListener("DOMContentLoaded", () => {
 <style>
     .parallel-section {
   position: relative;
-  width: 100%;
+  width: 100vw;               /* Force it to take the entire viewport width */
+  left: 50%;                  /* Center shift helper if nested inside a restricted container */
+  transform: translateX(-50%);/* Pulls it back to align perfectly edge-to-edge */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fcfcfc; /* Off-white background matching the screenshot */
+  background-color: #fcfcfc; 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow: hidden;
-  padding: 8rem 4rem;
+  padding: 8rem 10%;          /* Uses fluid percentages instead of restricted static padding */
   box-sizing: border-box;
 }
+   
 
 .parallel-content {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
-  width: 100%;
+  width: 100%;               /* Takes up the absolute maximum available section space */
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* Matches the left-heavy column balance */
+  grid-template-columns: 1.1fr 0.9fr; 
   gap: 6rem;
   align-items: flex-start;
 }
@@ -623,8 +625,6 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener('scroll', smoothScrollReveal);
 window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 </script>
-
-
 
 </body>
 </html>
