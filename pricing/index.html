@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parallel Pricing Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
     /* Reset and Base Styles */
     * {
@@ -14,7 +16,7 @@
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #e5dfd9; /* Muted beige background */
+      background-color: #f9f9f9; /* Muted beige background */
       color: #000000;
       display: flex;
       flex-direction: column;
@@ -112,14 +114,13 @@
       transition: all 0.3s ease;
     }
 
-    /* Side Nav Drawer (Mobile Only) */
     .sidenav {
       position: fixed;
       top: 0;
       right: -100%;
       width: 280px;
       height: 100vh;
-      background-color: #f5f0eb;
+      background-color: #f9f9f9;
       box-shadow: -5px 0 25px rgba(0,0,0,0.08);
       z-index: 1000;
       display: flex;
@@ -358,6 +359,12 @@
       .hero-section h1 {
         font-size: 40px;
       }
+      .price-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Adds a clean spacing between price and month */
+    margin-bottom: 15px;
+  }
 
       .pricing-card {
         grid-template-columns: 1fr;
@@ -385,6 +392,196 @@
         margin-top: 40px;
       }
     }
+
+    /* Container holding all three cards in a comparison row */
+.comparison-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0; /* Cards overlap slightly or touch */
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+/* Base style for the side gray cards */
+.comp-card-side {
+  background-color: rgba(255, 255, 255, 0.4); /* Translucent grayish look */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 340px;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Center Highlighted Card styling */
+.comp-card-center {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border: 2px solid #000; /* Orange boundary */
+  border-radius: 24px;
+  padding: 45px 35px;
+  box-shadow: 0 15px 45px rgba(240, 133, 62, 0.15); /* Orange glow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 2; /* Forces center card to pop over the side cards */
+  margin: 0 -15px; /* Subtle layout overlap */
+}
+
+/* Header Styles */
+.comp-header-side {
+  font-size: 22px;
+  font-weight: 600;
+  color: #8a8784;
+  margin-bottom: 35px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.comp-logo-center {
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  color: #000000;
+  margin-bottom: 35px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Lists styling */
+.comp-list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 0;
+  margin: 0;
+}
+
+.comp-list-center {
+  margin-bottom: 40px;
+}
+
+.comp-item {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: left;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.comp-item-side {
+  color: #7a7774; /* Dimmed text for alternatives */
+  font-weight: 500;
+}
+
+.comp-item-center {
+  color: #000000; /* Bold text for parallel */
+  font-weight: 600;
+}
+
+/* Reusable Badges (Minus and Checkmarks) */
+.comp-badge-minus {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #d1cac4;
+  color: #b5ada6;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comp-badge-check {
+  width: 22px;
+  height: 22px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.comp-badge-check::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+/* Center CTA button */
+.comp-btn-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #000;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: opacity 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.comp-btn-center:hover {
+  opacity: 0.95;
+}
+
+/* Responsive Handling: Stacks vertically cleanly on smaller viewports */
+@media (max-width: 900px) {
+  .comparison-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .comp-card-center {
+    margin: 0;
+    order: -1; /* Keeps the primary choice on top when stacked */
+  }
+
+  .comp-card-side {
+    max-width: 420px; /* Expands to match center card layout widths on mobile */
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+.comparison-section-title {
+  text-align: center;
+  font-size: 38px;
+  color: #000000;
+  font-weight: 600;
+  margin-top: 60px;
+  margin-bottom: -20px; /* Pulls the cards closer to the title */
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .comparison-section-title {
+    font-size: 28px;
+    margin-bottom: -10px;
+  }
+}
   </style>
 </head>
 <body>
@@ -415,7 +612,6 @@
     </button>
   </header>
 
-  <!-- Mobile Slide-out Side Navigation -->
   <div class="sidenav" id="sideNav">
     <nav class="sidenav-links">
       <a href="/">Home</a>
@@ -438,10 +634,10 @@
     <div class="price-container">
       <div class="price-row">
         <span class="currency-amount">₦27,561</span>
-        <span class="period">/mo</span>
+        <span class="period">/month</span>
       </div>
       <div class="trial-text">
-        Free <span>1 month</span> &bull; Set up in minutes
+        Free <span>2 months</span> 
       </div>
     </div>
 
@@ -466,6 +662,53 @@
     </div>
 
   </main>
+  <h2 class="comparison-section-title">See how we compare</h2>
+  <div class="comparison-container">
+
+  <!-- Left Card: Legacy Platforms -->
+  <div class="comp-card-side">
+    <div class="comp-header-side">Traditional Tools</div>
+    <ul class="comp-list">
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>User based pricing</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Not built for hiring workflows</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Takes time to setup</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Manual sorting of applicants</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>No tracking & management</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Poor candidate experience</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Poor converting application flows</li>
+    </ul>
+  </div>
+
+  <!-- Center Card: Parallel Highlighted -->
+  <div class="comp-card-center">
+    <div class="comp-logo-center">Roadmap</div>
+    <ul class="comp-list comp-list-center">
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>₦27,561/mo - unlimited jobs & seats</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>Tailored for startups & SMB's</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>Get up & running instantly</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>AI native workflows to save time</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>Super simple & easy to use</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>Candidate experience built in</li>
+      <li class="comp-item comp-item-center"><span class="comp-badge-check"></span>Top converting application flows</li>
+    </ul>
+    <a href="#" class="comp-btn-center">Start free trial &rarr;</a>
+  </div>
+
+  <!-- Right Card: Enterprise/Alternative ATS -->
+  <div class="comp-card-side">
+    <div class="comp-header-side">Enterprise ATS</div>
+    <ul class="comp-list">
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Expensive monthly contracts</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Built for scaled recruiting teams</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Time consuming to setup</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Workflows need intricate setup</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Bloated & complex to use</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>No native candidate experience</li>
+      <li class="comp-item comp-item-side"><span class="comp-badge-minus">&minus;</span>Poor converting application flows</li>
+    </ul>
+  </div>
+
+</div>
 
   <!-- JavaScript to trigger Side Nav Toggle -->
   <script>
