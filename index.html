@@ -82,36 +82,33 @@
     </p>
 
     <!-- Hero Visual Banner Container -->
-    <div class="relative w-full h-[260px] sm:h-[400px] md:h-[480px] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-gradient-to-r from-[#1e1b4b] via-[#311042] to-[#4c1d95] flex flex-col items-center justify-center px-4 sm:px-6 shadow-inner">
-      
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 pointer-events-none"></div>
+    <!-- Changes made: Changed rounded corners to basic md (rectangle) and replaced bg-gradient with a black fallback + background image inline style -->
+<!-- Change 'w-full' to 'w-screen', remove 'rounded-md', and remove horizontal padding (px-4 sm:px-6) if you want the image to completely touch the screen edges -->
+<div 
+  class="relative w-screen left-1/2 right-1/2 -ml-[50vw] h-[260px] sm:h-[400px] md:h-[480px] overflow-hidden bg-black flex flex-col items-center justify-center px-4 shadow-inner"
+  style="background-image: url('images/road.jpeg'); background-size: cover; background-position: center;"
+>
+  
+  <!-- Changed gradient from transparent-to-black to a full black tint overlay to make the image darker -->
+  <div class="absolute inset-0 bg-black/50 pointer-events-none"></div>
 
-      <!-- Centered Floating Search Container -->
-      <div class="relative z-10 w-full max-w-xl md:max-w-2xl bg-white/95 backdrop-blur-md p-1.5 sm:p-2.5 md:p-3 rounded-2xl md:rounded-3xl shadow-2xl flex items-center justify-between border border-white/40">
-        <input 
-          type="text" 
-          placeholder="Your email for updates & perks" 
-          class="w-full bg-transparent pl-3 sm:pl-4 pr-2 py-2 sm:py-3 text-sm sm:text-base md:text-lg text-gray-800 placeholder-gray-400 focus:outline-none"
-        />
-        <button class="bg-[#581c87] text-white p-2.5 sm:p-3 rounded-xl hover:bg-[#4a148c] transition-all flex items-center justify-center shrink-0 shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Live Job Metrics Footer -->
-      <div class="relative z-10 mt-4 sm:mt-6 flex items-center space-x-1.5 sm:space-x-2 bg-black/10 backdrop-blur-sm px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-white text-[11px] sm:text-xs md:text-sm font-medium tracking-wide">
-        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#581c87] inline-block animate-pulse"></span>
-        <span>Avg. payout is in 6 hours</span>
-
-        </span>
-      </div>
-
-    </div>
+  <!-- Centered Floating Search Container -->
+  <div class="relative z-10 w-full max-w-xl md:max-w-2xl bg-white/95 backdrop-blur-md p-1.5 sm:p-2.5 md:p-3 rounded-2xl md:rounded-3xl shadow-2xl flex items-center justify-between border border-white/40">
+    <input 
+      type="text" 
+      placeholder="Your email for updates & perks" 
+      class="w-full bg-transparent pl-3 sm:pl-4 pr-2 py-2 sm:py-3 text-sm sm:text-base md:text-lg text-gray-800 placeholder-gray-400 focus:outline-none"
+    />
+    <!-- Changed button background color from purple (#581c87) to black (#000000) -->
+    <button class="bg-black text-white p-2.5 sm:p-3 rounded-xl hover:bg-gray-900 transition-all flex items-center justify-center shrink-0 shadow-md">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </button>
+  </div>
+</div>
   </main>
 
-  <!-- Simple Mobile Toggle JavaScript -->
   <script>
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -137,6 +134,162 @@
       }
     });
   </script>
+  <section class="why-us-scoped-section">
+  <div class="why-us-container">
+    <div class="why-us-badge">
+      WHY US
+    </div>
+    <h2 class="why-us-heading">
+      Every agent we deploy is measured against real business outcomes — 
+      <span id="why-us-typed-text" class="text-muted"></span><span class="type-cursor">|</span>
+    </h2>
+  </div>
+  <div class="why-us-fade-bottom"></div>
+</section>
+<style>
+.why-us-scoped-section {
+  background-color: #0b0b0b;
+  padding: 80px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.why-us-scoped-section .why-us-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.why-us-scoped-section .why-us-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #161616;
+  border: 1px solid #262626;
+  color: #e5e5e5;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+
+.why-us-scoped-section .why-us-heading {
+  color: #ffffff;
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 1000px;
+}
+
+/* The typing text style */
+.why-us-scoped-section .text-muted {
+  color: #555555; /* Muted grey */
+}
+
+/* The blinking cursor */
+.why-us-scoped-section .type-cursor {
+  color: #555555;
+  animation: whyUsBlink 0.7s infinite;
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+@keyframes whyUsBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .why-us-scoped-section .why-us-heading { font-size: 2.2rem; }
+}
+
+.why-us-scoped-section {
+  position: relative; /* REQUIRED: Keeps the fades locked inside this section */
+  background-color: #0b0b0b;
+  padding: 0 40px 140px 40px; /* Increased padding slightly to allow space for the fade */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* NEW: Bottom Fade Effect (Dark to White) */
+.why-us-scoped-section .why-us-fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust height to make the fade longer or shorter */
+  background: linear-gradient(to top, #ffffff, transparent);
+  pointer-events: none; /* Allows clicks to pass through */
+}
+</style>
+<script>
+(function() {
+  // The phrases it will rotate through
+  const phrases = [
+    "leads captured.",
+    "hours saved.",
+    "costs reduced."
+  ];
+  
+  let phraseIndex = 0;
+  let characterIndex = 0;
+  let isDeleting = false;
+  
+  const targetElement = document.getElementById("why-us-typed-text");
+  
+  // Typing speed settings (in milliseconds)
+  const typeSpeed = 100;
+  const eraseSpeed = 50;
+  const delayBetweenPhrases = 2000; // How long it stays fully written
+  
+  function typeEffect() {
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+      // Remove a character
+      characterIndex--;
+    } else {
+      // Add a character
+      characterIndex++;
+    }
+    
+    // Inject the partial text into the HTML
+    targetElement.textContent = currentPhrase.substring(0, characterIndex);
+    
+    // Determine the next pace
+    let currentSpeed = isDeleting ? eraseSpeed : typeSpeed;
+    
+    // If the word is fully typed out
+    if (!isDeleting && characterIndex === currentPhrase.length) {
+      currentSpeed = delayBetweenPhrases; // Pause before erasing
+      isDeleting = true;
+    } 
+    // If the word is completely erased
+    else if (isDeleting && characterIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length; // Move to next phrase
+      currentSpeed = 500; // Small pause before starting to type again
+    }
+    
+    setTimeout(typeEffect, currentSpeed);
+  }
+  
+  // Start the loop once the DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    if (targetElement) typeEffect();
+  });
+})();
+</script>
 
   <section class="pw-section">
   <div class="pw-container">
@@ -376,7 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
   flex-direction: column;
   gap: 2.5rem;
   align-items: flex-start;
-  margin-top: auto; /* Aligns paragraph closer to the bottom right as pictured */
+  margin-top: auto;
 }
 
 /* --- THE GRADUAL REVEAL STYLE --- */
@@ -457,25 +610,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const fadeStart = windowHeight * 0.85;
     const fadeEnd = windowHeight * 0.55;
 
-    // Calculate progress fraction between 0 and 1
     let progress = (fadeStart - rect.top) / (fadeStart - fadeEnd);
     
-    // Constrain progress between 0 (completely gray) and 1 (completely black)
     progress = Math.max(0, Math.min(1, progress));
 
-    // Map progress to smooth opacity values between base opacity (0.15) and full (1.0)
     const exactOpacity = 0.15 + (progress * 0.85);
     
-    // Apply directly to the element dynamically
     line.style.setProperty('--progress', exactOpacity);
   });
 }
 
-// Listen to scroll events
 window.addEventListener('scroll', smoothScrollReveal);
-// Trigger once initially to set values on page load
 window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 </script>
+
+
 
 </body>
 </html>
