@@ -22,59 +22,276 @@
     .serif-title {
       font-family: 'Playfair Display', serif;
     }
+    
   </style>
 </head>
 <body class="text-[#1a1a1a] relative overflow-x-hidden">
 
   <!-- Header / Navigation -->
-  <header class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between relative z-50">
-    <!-- Logo & Left Link (Desktop Only) -->
-    <div class="flex items-center space-x-4">
-      <span class="text-2xl font-bold tracking-tight text-black">tixtee. Roadmap</span>
-      <a href="#" class="hidden md:inline-block bg-[#ededed] text-sm font-medium px-4 py-2 rounded-full hover:bg-gray-200 transition">Explore</a>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════════════
+     COMPLETE NAV WITH DROPDOWNS — Desktop & Mobile
+     Desktop: hover dropdowns | Mobile: tap to expand
+     ═══════════════════════════════════════════════════════════════ -->
 
-    <!-- Center Segmented Control (Desktop Only) -->
-    <div class="hidden md:flex bg-[#ededed] p-1 rounded-full items-center space-x-1">
+<style>
+  /* ── Desktop Dropdown Styles ── */
+  .nav-btn-wrap {
+    position: relative;
+  }
+
+  .desktop-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: white;
+    border-radius: 16px;
+    padding: 8px 0;
+    min-width: 220px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 100;
+    margin-top: 8px;
+  }
+  .nav-btn-wrap::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px;
+  background: transparent;
+  z-index: 99;
+}
+
+  .nav-btn-wrap:hover .desktop-dropdown,
+  .nav-btn-wrap:focus-within .desktop-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .desktop-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+
+  .desktop-dropdown a:hover {
+    color: black;
+    background: #f5f5f5;
+  }
+
+  /* ── Mobile Dropdown Styles ── */
+  .nav-item {
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-link .chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #9ca3af;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-item.active .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding-left: 0.5rem;
+  }
+
+  .nav-item.active .dropdown {
+    max-height: 400px;
+    padding-bottom: 0.75rem;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 0.625rem 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .dropdown a:hover {
+    color: #111;
+  }
+</style>
+
+<!-- HEADER -->
+<header class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between relative z-50">
+  <!-- Logo & Left Link (Desktop Only) -->
+  <div class="flex items-center space-x-4">
+    <span class="text-2xl font-bold tracking-tight text-black">tixtee. Roadmap</span>
+    <a href="#" class="hidden md:inline-block bg-[#ededed] text-sm font-medium px-4 py-2 rounded-full hover:bg-gray-200 transition">Explore</a>
+  </div>
+
+  <!-- Center Segmented Control (Desktop Only) — WITH DROPDOWNS -->
+  <div class="hidden md:flex bg-[#ededed] p-1 rounded-full items-center space-x-1">
+    <!-- Products with dropdown -->
+    <div class="nav-btn-wrap">
       <button class="bg-white text-sm font-medium px-5 py-1.5 rounded-full shadow-sm">Products</button>
-      <a href="/pricing"><button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Pricing</button></a>
+      <div class="desktop-dropdown">
+        <a href="#">Organisers</a>
+        <a href="#">Venues</a>
+        <a href="#">Logistics</a>
+        <a href="#">Attendees</a>
+      </div>
+    </div>
+
+    <!-- Pricing (no dropdown) -->
+    <a href="/pricing"><button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Pricing</button></a>
+
+    <!-- Solutions with dropdown -->
+    <div class="nav-btn-wrap">
       <button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Solutions</button>
+      <div class="desktop-dropdown">
+        <a href="#">For Startups</a>
+        <a href="#">By Industry</a>
+        <a href="#">By Feature</a>
+      </div>
+    </div>
+
+    <!-- Resources with dropdown -->
+    <div class="nav-btn-wrap">
       <button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Resources</button>
-    </div>
-
-    <!-- Right Navigation (Desktop Only) -->
-    <div class="hidden md:flex items-center space-x-6">
-      <a href="#" class="text-sm font-medium text-gray-700 hover:text-black transition">Sign in</a>
-      <a href="#" class="bg-[#ededed] text-sm font-medium px-5 py-2 rounded-full hover:bg-gray-200 transition">Sign up</a>
-    </div>
-
-    <!-- Hamburger Menu Button (Mobile Only) -->
-    <button id="menu-btn" class="block md:hidden text-black focus:outline-none p-2 z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
-  </header>
-
-  <!-- Mobile Full-Screen Navigation Overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-6 pt-24">
-    <!-- Navigation Links -->
-    <div class="flex flex-col space-y-6 text-xl font-medium px-4">
-      <a href="#" class="hover:text-gray-600 transition">Products</a>
-      <a href="/pricing" class="hover:text-gray-600 transition">Pricing</a>
-      <a href="#" class="hover:text-gray-600 transition">Solutions</a>
-      <a href="#" class="hover:text-gray-600 transition">Resources</a>
-      <hr class="border-gray-200" />
-      <a href="#" class="hover:text-gray-600 transition">Sign in</a>
-    </div>
-
-    <!-- Call to Action Footer inside Mobile Menu -->
-    <div class="px-4 pb-8">
-      <a href="#" class="block w-full text-center bg-[#1a1a1a] text-white font-medium py-4 rounded-xl hover:bg-black transition">
-        Sign Up
-      </a>
+      <div class="desktop-dropdown">
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+        <a href="#">Community</a>
+        <a href="#">Support</a>
+      </div>
     </div>
   </div>
+
+  <!-- Right Navigation (Desktop Only) -->
+  <div class="hidden md:flex items-center space-x-6">
+    <a href="#" class="text-sm font-medium text-gray-700 hover:text-black transition">Sign in</a>
+    <a href="#" class="bg-[#ededed] text-sm font-medium px-5 py-2 rounded-full hover:bg-gray-200 transition">Sign up</a>
+  </div>
+
+  <!-- Hamburger Menu Button (Mobile Only) -->
+  <button id="menu-btn" class="block md:hidden text-black focus:outline-none p-2 z-50" onclick="toggleMenu()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+  </button>
+</header>
+
+<!-- Mobile Full-Screen Navigation Overlay — WITH DROPDOWNS -->
+<div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-6 pt-24">
+  <!-- Navigation Links -->
+  <div class="flex flex-col space-y-0 text-xl font-medium px-4">
+    <!-- Products WITH dropdown -->
+    <div class="nav-item">
+      <a class="nav-link flex items-center justify-between py-4 text-gray-900" onclick="toggleDropdown(event, this)">
+        <span>Products</span>
+        <svg class="chevron w-5 h-5 text-gray-400 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+      <div class="dropdown overflow-hidden max-h-0 transition-all duration-300 ease-in-out pl-2">
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Organisers</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Venues</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Logistics</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Attendees</a>
+      </div>
+    </div>
+
+    <!-- Pricing WITHOUT dropdown -->
+    <div class="nav-item">
+      <a href="/pricing" class="nav-link block py-4 text-gray-900">Pricing</a>
+    </div>
+
+    <!-- Solutions WITH dropdown -->
+    <div class="nav-item">
+      <a class="nav-link flex items-center justify-between py-4 text-gray-900" onclick="toggleDropdown(event, this)">
+        <span>Solutions</span>
+        <svg class="chevron w-5 h-5 text-gray-400 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+      <div class="dropdown overflow-hidden max-h-0 transition-all duration-300 ease-in-out pl-2">
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">For Startups</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">By Industry</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">By Feature</a>
+      </div>
+    </div>
+
+    <!-- Resources WITH dropdown -->
+    <div class="nav-item">
+      <a class="nav-link flex items-center justify-between py-4 text-gray-900" onclick="toggleDropdown(event, this)">
+        <span>Resources</span>
+        <svg class="chevron w-5 h-5 text-gray-400 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+      <div class="dropdown overflow-hidden max-h-0 transition-all duration-300 ease-in-out pl-2">
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">FAQ</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Blog</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Community</a>
+        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Support</a>
+      </div>
+    </div>
+
+    <hr class="border-gray-200" />
+
+    <!-- Sign in WITHOUT dropdown -->
+    <div class="nav-item">
+      <a href="#" class="nav-link block py-4 text-gray-900">Sign in</a>
+    </div>
+  </div>
+
+  <!-- Call to Action Footer inside Mobile Menu -->
+  <div class="px-4 pb-8">
+    <a href="#" class="block w-full text-center bg-[#1a1a1a] text-white font-medium py-4 rounded-xl hover:bg-black transition">
+      Sign Up
+    </a>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+function toggleDropdown(e, el) {
+  e.preventDefault();
+  const item = el.closest('.nav-item');
+  document.querySelectorAll('.nav-item.active').forEach(i => {
+    if (i !== item) i.classList.remove('active');
+  });
+  item.classList.toggle('active');
+}
+</script>
 
   <!-- Hero Section -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-0 text-center">
