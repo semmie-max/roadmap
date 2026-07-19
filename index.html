@@ -629,10 +629,276 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 </script>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     GRAPHITE-STYLE FEATURES SECTION
-     Scroll-triggered animations, pure black cards, white bg,
-     no container, fully responsive, all SVGs.
+     BIZOU-STYLE ABOUT SECTION — Tight Layout
+     Smaller container, overlapping images, text under right image.
      ═══════════════════════════════════════════════════════════════ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  .bizou-section {
+    --bg: #ffffff;
+    --text: #111111;
+    --text-secondary: #444444;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .bizou-section * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Marquee Header ── */
+  .marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    padding: 40px 0 20px;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .marquee-item {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 800;
+    font-family: "Rubik Glitch Pop", system-ui;
+    color: var(--text);
+    white-space: nowrap;
+    padding: 0 20px;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .marquee-dot {
+    width: clamp(12px, 2vw, 24px);
+    height: clamp(12px, 2vw, 24px);
+    background: var(--text);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  /* ── Content Grid ── */
+  .bizou-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 40px clamp(20px, 4vw, 60px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bizou-text {
+    padding-top: 0;
+  }
+
+  .bizou-text p {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    max-width: 460px;
+  }
+
+  .bizou-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--text);
+    color: var(--bg);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .bizou-btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+
+  /* ── Images ── */
+  .bizou-images {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .bizou-img {
+    width: 300px;       /* fixed width */
+  height: 200px;      /* fixed height */
+  max-width: none;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bizou-img img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+  }
+
+  .bizou-img.top {
+    transform: translateY(-20px);
+    align-self: flex-start;
+  }
+
+  .bizou-img.bottom {
+    transform: translateY(-40px) translateX(40px);
+    align-self: flex-end;
+  }
+
+  /* ── Right text under image ── */
+  .bizou-img-text {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 320px;
+    margin-top: -30px;
+    padding-left: 40px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .bizou-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .bizou-text {
+      text-align: center;
+      order: 2;
+    }
+    .bizou-text p {
+      max-width: none;
+    }
+    .bizou-images {
+      order: 1;
+      flex-direction: row;
+      gap: 16px;
+      justify-content: center;
+    }
+    .bizou-img {
+      max-width: 260px;
+    }
+    .bizou-img.top,
+    .bizou-img.bottom {
+      transform: none;
+      align-self: auto;
+    }
+    .bizou-img-text {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bizou-images {
+      flex-direction: column;
+      align-items: center;
+    }
+    .bizou-img {
+      max-width: 100%;
+    }
+    .marquee-item {
+      font-size: clamp(1.8rem, 7vw, 3rem);
+    }
+  }
+</style>
+
+<div class="bizou-section" id="bizouSection">
+  <!-- Marquee Header -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-item">
+        .Roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span>
+      </div>
+      <div class="marquee-item">
+        .roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span> .roadmap <span class="marquee-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="bizou-content">
+    <div class="bizou-text">
+      <p>
+        Organizers wait months to get paid. Hotels pray for bookings. Transport companies gamble on demand. And attendees juggle five apps just to get to the show. <br> Everyone works in silos. Everyone loses. We built one platform to fix that.<br>
+        <br> Ticketing. Hotels. Transport. Payments. We put them all in one place.
+      </p>
+      <a href="#" class="bizou-btn">Read Our Story</a>
+    </div>
+
+    <div class="bizou-images">
+      <div class="bizou-img top">
+        <!-- Replace with your image -->
+        <img src="images/road.jpeg" alt="Working on laptop" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  const section = document.getElementById('bizouSection');
+  if (!section) return;
+
+  const track = document.getElementById('marqueeTrack');
+  let isInView = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isInView = entry.isIntersecting;
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(section);
+
+  function updateMarquee() {
+    if (!isInView) {
+      requestAnimationFrame(updateMarquee);
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const sectionTop = rect.top;
+    const sectionHeight = rect.height;
+
+    const progress = Math.max(0, Math.min(1,
+      (viewportHeight - sectionTop) / (viewportHeight + sectionHeight)
+    ));
+
+    const scrollPos = progress * 400;
+    track.style.transform = 'translateX(-' + scrollPos + 'px)';
+
+    requestAnimationFrame(updateMarquee);
+  }
+
+  requestAnimationFrame(updateMarquee);
+})();
+</script>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
