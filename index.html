@@ -158,10 +158,10 @@
     <div class="nav-btn-wrap">
       <button class="bg-white text-sm font-medium px-5 py-1.5 rounded-full shadow-sm">Products</button>
       <div class="desktop-dropdown">
-        <a href="#">Organisers</a>
-        <a href="#">Venues</a>
-        <a href="#">Logistics</a>
-        <a href="#">Attendees</a>
+        <a href="/products">Organisers</a>
+        <a href="/products">Venues</a>
+        <a href="/products#changelog-card">Logistics</a>
+        <a href="/products">Attendees</a>
       </div>
     </div>
 
@@ -217,10 +217,10 @@
         </svg>
       </a>
       <div class="dropdown overflow-hidden max-h-0 transition-all duration-300 ease-in-out pl-2">
-        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Organisers</a>
-        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Venues</a>
-        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Logistics</a>
-        <a href="#" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Attendees</a>
+        <a href="/products" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Organisers</a>
+        <a href="/products" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Venues</a>
+        <a href="/products" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Logistics</a>
+        <a href="/products" class="block py-2.5 text-base text-gray-500 hover:text-gray-900">Attendees</a>
       </div>
     </div>
 
@@ -358,9 +358,6 @@ function toggleDropdown(e, el) {
   </script>
   <section class="why-us-scoped-section">
   <div class="why-us-container">
-    <div class="why-us-badge">
-      ABOUT US.
-    </div>
     <h2 class="why-us-heading">
         The all-in-one platform that connects
       <span id="why-us-typed-text" class="text-muted"></span><span class="type-cursor">|</span>
@@ -513,7 +510,7 @@ function toggleDropdown(e, el) {
 
   <section class="pw-section">
   <div class="pw-container">
-    <h2 class="pw-title">How tixtee. Roadmap Works</h2>
+    <h2 class="pw-title">How .Roadmap Works</h2>
     
     <div class="pw-grid">
       <!-- Card 1 -->
@@ -524,7 +521,7 @@ function toggleDropdown(e, el) {
         </div>
         <div class="pw-card-content">
           <h3 class="pw-card-title">Launch Your Event Ecosystem</h3>
-          <p class="pw-card-text">In under 10 minutes, you can set up a fully optimized event page with tiered ticketing, seamless checkout, and built-in travel bundles. Connect your venue to local hotels and shuttle routes so attendees can book their entire experience in one click. You set the markup on every room and ride — turning logistics into an automated, passive revenue stream before your first ticket even sells.</p>
+          <p class="pw-card-text">In under 10 minutes, you set up a fully optimized event page with tiered ticketing, seamless checkout, and built-in travel bundles. Connect your venue to local hotels and shuttle routes so attendees can book their entire experience. You set the markup on every room and ride turning logistics into an automated, passive revenue stream before your first ticket even sells.</p>
         </div>
       </div>
 
@@ -536,7 +533,7 @@ function toggleDropdown(e, el) {
         </div>
         <div class="pw-card-content">
           <h3 class="pw-card-title">Sell Fast, Unlock Faster</h3>
-          <p class="pw-card-text">Every ticket sale feeds real-time data into your dashboard. The moment your sales hit specific momentum thresholds, the platform automatically unlocks a portion of your ticket revenue  directly to your bank account. No waiting until the show is over. Just your own earnings, accessible early, so you can cover deposits, artists, and marketing while the hype is still building.
+          <p class="pw-card-text">Every ticket sale feeds real-time data into your dashboard. The moment your sales hit specific momentum thresholds, the platform automatically unlocks a portion of your ticket revenue. Your own earnings, accessible early, so you can cover deposits, artists, and marketing while building hype.
 
 </p>
         </div>
@@ -550,7 +547,7 @@ function toggleDropdown(e, el) {
         </div>
         <div class="pw-card-content">
           <h3 class="pw-card-title">Connect to teams</h3>
-          <p class="pw-card-text">Now you have the insights to make next year even bigger. Dive into deep analytics: see which hotels sold out, which shuttle routes were most used, and exactly where your attendees came from. Manage payouts, tax docs, and check-ins all from one dashboard. You stop guessing and start growing. Because every event becomes a blueprint for the next.</p>
+          <p class="pw-card-text">Now that you have the insights to make next event bigger. Dive into deep analytics, Manage payouts, tax docs, and check-ins all from one dashboard. Stop guessing and start growing. Every event becomes a blueprint for the next.</p>
         </div>
       </div>
     </div>
@@ -699,7 +696,10 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="right-col">
       <div class="scroll-reveal-container">
         <p class="reveal-line">Tixtee isn't just another ticketing tool</p>
-        <p class="reveal-line">it's a complete operations platform built for organizers who refuse to leave money on the table. Sell tickets, bundle hotels and shuttles for your attendees, and unlock your revenue early the moment your sales gain momentum.</p>
+        <p class="reveal-line">it's a complete operations platform built</p>
+        <p class="reveal-line"> for organizers who refuse to leave money on the table.</p>
+        <p class="reveal-line"> Sell tickets, bundle hotels and shuttles for your attendees,</p>
+        <p class="reveal-line"> and unlock your revenue early the moment your sales gain momentum.</p>
         <p class="reveal-line">Just a seamless system that turns your event into a scalable business.</p>
       </div>
       <a href="#" class="find-jobs-btn">Unlock Your Revenue</a>
@@ -727,14 +727,13 @@ document.addEventListener("DOMContentLoaded", () => {
 .parallel-content {
   position: relative;
   z-index: 2;
-  width: 100%;               /* Takes up the absolute maximum available section space */
+  width: 100%;               
   display: grid;
   grid-template-columns: 1.1fr 0.9fr; 
   gap: 6rem;
   align-items: flex-start;
 }
 
-/* Typography matching the image */
 .main-title {
   font-size: 4.2rem;
   font-weight: 400;
@@ -753,17 +752,16 @@ document.addEventListener("DOMContentLoaded", () => {
   margin-top: auto;
 }
 
-/* --- THE GRADUAL REVEAL STYLE --- */
 .scroll-reveal-container {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 1.3rem;
 }
 
 .reveal-line {
-  font-size: 1.65rem;
+  font-size: 1.40rem;
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
   letter-spacing: -0.01em;
   /* We control opacity directly via a CSS variable updated by JavaScript */
@@ -938,7 +936,7 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
     padding: 12px 28px;
     border-radius: 30px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -948,11 +946,10 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
   }
 
   .bizou-btn:hover {
-    transform: scale(1.03);
+    transform: scale(1.23);
     opacity: 0.9;
   }
 
-  /* ── Images ── */
   .bizou-images {
     display: flex;
     flex-direction: column;
@@ -961,8 +958,8 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
   }
 
   .bizou-img {
-    width: 300px;       /* fixed width */
-  height: 200px;      /* fixed height */
+    width: 300px;       
+  height: 200px;      
   max-width: none;
     border-radius: 12px;
     overflow: hidden;
@@ -987,7 +984,6 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
     align-self: flex-end;
   }
 
-  /* ── Right text under image ── */
   .bizou-img-text {
     font-size: clamp(0.9rem, 1.2vw, 1rem);
     line-height: 1.6;
@@ -997,7 +993,6 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
     padding-left: 40px;
   }
 
-  /* ── Responsive ── */
   @media (max-width: 900px) {
     .bizou-content {
       grid-template-columns: 1fr;
@@ -1044,7 +1039,6 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 </style>
 
 <div class="bizou-section" id="bizouSection">
-  <!-- Marquee Header -->
   <div class="marquee-wrap">
     <div class="marquee-track" id="marqueeTrack">
       <div class="marquee-item">
@@ -1056,11 +1050,10 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
     </div>
   </div>
 
-  <!-- Content -->
   <div class="bizou-content">
     <div class="bizou-text">
       <p>
-        Organizers wait months to get paid. Hotels pray for bookings. Transport companies gamble on demand. And attendees juggle five apps just to get to the show. <br> Everyone works in silos. Everyone loses. We built one platform to fix that.<br>
+        Organizers wait months to get paid. Hotels pray for bookings. Transport companies gamble on demand. And attendees juggle five apps to get to the show. <br> <br>Everyone works in silos. Everyone loses.<br>
         <br> Ticketing. Hotels. Transport. Payments. We put them all in one place.
       </p>
       <a href="#" class="bizou-btn">Read Our Story</a>
@@ -1068,7 +1061,6 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 
     <div class="bizou-images">
       <div class="bizou-img top">
-        <!-- Replace with your image -->
         <img src="images/road.jpeg" alt="Working on laptop" />
       </div>
     </div>
@@ -1612,6 +1604,155 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 })();
 </script>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     CTA SECTION — Black card on white background
+     Subtle abstract shapes inside, rounded corners, responsive.
+     ═══════════════════════════════════════════════════════════════ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  .cta-section {
+    --bg: #ffffff;
+    --card-bg: #0a0a0a;
+    --text: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    width: 100%;
+    padding: 40px 24px;
+    box-sizing: border-box;
+  }
+
+  .cta-section * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cta-card {
+    background: var(--card-bg);
+    border-radius: 32px;
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Subtle abstract shapes */
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.03) 0%, transparent 70%);
+    transform: rotate(-15deg);
+    pointer-events: none;
+  }
+
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -10%;
+    width: 50%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.02) 0%, transparent 60%);
+    transform: rotate(20deg);
+    pointer-events: none;
+  }
+
+  .cta-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn-primary {
+    background: var(--text);
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .cta-btn-primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .cta-btn-secondary {
+    background: transparent;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cta-btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  @media (max-width: 640px) {
+    .cta-card { padding: 60px 24px; border-radius: 24px; }
+    .cta-heading { margin-bottom: 28px; }
+    .cta-buttons { flex-direction: column; width: 100%; }
+    .cta-btn-primary, .cta-btn-secondary { width: 100%; text-align: center; }
+  }
+</style>
+
+<div class="cta-section">
+  <div class="cta-card">
+    <span class="cta-badge">free trial</span>
+    <h2 class="cta-heading">Still a bit curious? Start your<span class="2months"><br>2 Months <br></span> free trial today</h2>
+    <div class="cta-buttons">
+      <a href="#" class="cta-btn-primary">Get Started Now</a>
+      <a href="#" class="cta-btn-secondary">See plans.</a>
+    </div>
+  </div>
+</div>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -1814,7 +1955,7 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 
 <div class="roadmap-footer">
   <div class="footer-logo">
-    tixtee. Roadmap<span class="reg-mark">®</span>
+    .Roadmap<span class="reg-mark">®</span>
   </div>
 
   <div class="footer-links">
@@ -1822,7 +1963,7 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
 
     <div class="footer-col">
       <h4>Explore</h4>
-      <a href="#">Products</a>
+      <a href="/products">Products</a>
       <a href="#">Pricing</a>
       <a href="#">Solutions</a>
       <a href="#">Resources</a>
@@ -1875,6 +2016,9 @@ window.addEventListener('DOMContentLoaded', smoothScrollReveal);
     </div>
   </div>
 </div>
+
+
+
 
 </body>
 </html>

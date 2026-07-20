@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tixtee. Roadmap</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --text-secondary: #666666;
+      --text-muted: #888888;
+      --border: #e5e5e5;
+      --card-bg: #f5f5f7;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Desktop nav dropdowns ── */
+    .nav-btn-wrap {
+      position: relative;
+    }
+
+    .desktop-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: white;
+      border-radius: 16px;
+      padding: 8px 0;
+      min-width: 220px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 100;
+      margin-top: 8px;
+    }
+
+    .nav-btn-wrap::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      right: -20px;
+      height: 20px;
+      background: transparent;
+      z-index: 99;
+    }
+
+    .nav-btn-wrap:hover .desktop-dropdown,
+    .nav-btn-wrap:focus-within .desktop-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .desktop-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      color: #444;
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+
+    .desktop-dropdown a:hover {
+      color: black;
+      background: #f5f5f5;
+    }
+
+    /* ── Mobile nav dropdowns ── */
+    .nav-item {
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #111;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-link .chevron {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #9ca3af;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-item.active .chevron {
+      transform: rotate(180deg);
+    }
+
+    .dropdown {
+      overflow: hidden;
+      max-height: 0;
+      padding-left: 0.5rem;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .nav-item.active .dropdown {
+      max-height: 400px;
+      padding-bottom: 0.75rem;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.625rem 0;
+      font-size: 0.95rem;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .dropdown a:hover {
+      color: #111;
+    }
+
+    /* ── Changelog / timeline ── */
+    .changelog-page {
+      background: var(--bg);
+      color: var(--text);
+      width: 100%;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    .changelog-page * {
+      box-sizing: border-box;
+    }
+
+    .changelog-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .changelog-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      font-family: 'Georgia', serif;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 4px 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .search-box svg {
+      width: 16px;
+      height: 16px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .subscribe-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .subscribe-btn:hover {
+      opacity: 0.85;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 120px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 116px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .changelog-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .card-body {
+      padding: 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--text);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .card-body h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 20px;
+      padding-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text);
+    }
+
+    .feature-list li:last-child {
+      padding-bottom: 0;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 28px 28px;
+    }
+
+    .avatars {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatars img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      object-fit: cover;
+    }
+
+    .avatars img:first-child {
+      margin-left: 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-left: 40px;
+      }
+      .timeline-dot {
+        left: 16px;
+        top: 4px;
+      }
+      .timeline-date {
+        text-align: left;
+        font-size: 0.8rem;
+      }
+      .changelog-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-actions {
+        width: 100%;
+      }
+      .search-box {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .timeline {
+        padding: 20px 16px;
+      }
+      .card-body {
+        padding: 20px;
+      }
+      .card-body h2 {
+        font-size: 1.25rem;
+      }
+      .card-footer {
+        padding: 0 20px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between relative z-50">
+    <div class="flex items-center space-x-4">
+      <span class="text-2xl font-bold tracking-tight text-black">tixtee. Roadmap</span>
+      <a href="#" class="hidden md:inline-block bg-[#ededed] text-sm font-medium px-4 py-2 rounded-full hover:bg-gray-200 transition">Explore</a>
+    </div>
+
+    <!-- Center segmented control (desktop) -->
+    <div class="hidden md:flex bg-[#ededed] p-1 rounded-full items-center space-x-1">
+      <a href="/"><button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Home</button></a>
+      <a href="/pricing"><button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Pricing</button></a>
+
+      <div class="nav-btn-wrap">
+        <button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Solutions</button>
+        <div class="desktop-dropdown">
+          <a href="#">For Startups</a>
+          <a href="#">By Industry</a>
+          <a href="#">By Feature</a>
+        </div>
+      </div>
+
+      <div class="nav-btn-wrap">
+        <button class="text-sm font-medium text-gray-500 px-5 py-1.5 rounded-full hover:text-black transition">Resources</button>
+        <div class="desktop-dropdown">
+          <a href="#">FAQ</a>
+          <a href="#">Blog</a>
+          <a href="#">Community</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right nav (desktop) -->
+    <div class="hidden md:flex items-center space-x-6">
+      <a href="#" class="text-sm font-medium text-gray-700 hover:text-black transition">Sign in</a>
+      <a href="#" class="bg-[#ededed] text-sm font-medium px-5 py-2 rounded-full hover:bg-gray-200 transition">Sign up</a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button id="menu-btn" class="block md:hidden text-black focus:outline-none p-2 z-50" aria-label="Toggle menu" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Mobile full-screen nav overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-between p-6 pt-24">
+    <div class="flex flex-col space-y-0 text-xl font-medium px-4">
+      <div class="nav-item">
+        <a href="/" class="nav-link block py-4 text-gray-900">Home.</a>
+      </div>
+
+      <div class="nav-item">
+        <a href="/pricing" class="nav-link block py-4 text-gray-900">Pricing.</a>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-link" data-dropdown-toggle>
+          <span>Solutions.</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
+        <div class="dropdown">
+          <a href="#">For Startups</a>
+          <a href="#">By Industry</a>
+          <a href="#">By Feature</a>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-link" data-dropdown-toggle>
+          <span>Resources.</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
+        <div class="dropdown">
+          <a href="#">FAQ</a>
+          <a href="#">Blog</a>
+          <a href="#">Community</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+
+      <hr class="border-gray-200" />
+
+      <div class="nav-item">
+        <a href="#" class="nav-link block py-4 text-gray-900">Sign in</a>
+      </div>
+    </div>
+
+    <div class="px-4 pb-8">
+      <a href="#" class="block w-full text-center bg-[#1a1a1a] text-white font-medium py-4 rounded-xl hover:bg-black transition">
+        Sign Up
+      </a>
+    </div>
+  </div>
+
+  <!-- ROADMAP / CHANGELOG -->
+  <div class="changelog-page">
+    <div class="changelog-header">
+      <h1>Products.</h1>
+      <div class="header-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full bg-transparent py-2 sm:py-3 text-sm sm:text-base text-gray-800 placeholder-gray-400 focus:outline-none"
+          />
+        </div>
+        <button class="subscribe-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+          </svg>
+          Subscribe
+        </button>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Jul 16, 2026</div>
+        <div class="timeline-dot"></div>
+        <div class="changelog-card">
+          <div class="card-body">
+            <span class="badge">New</span>
+            <h2>For Organisers</h2>
+            <ul class="feature-list">
+              <li>Task Automation</li>
+              <li>Multi-Event Management</li>
+              <li>Virtual Event Builder</li>
+              <li>Interactive Seat Maps</li>
+              <li>White-Label Branding</li>
+              <li>Sponsorship Matchmaker</li>
+              <li>Vendor Marketplace</li>
+              <li>Custom Event Websites</li>
+              <li>Artist &amp; Performer Booking</li>
+              <li>Risk Protection</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="avatars">
+              <img src="https://i.pravatar.cc/150?img=1" alt="User" />
+              <img src="https://i.pravatar.cc/150?img=2" alt="User" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jul 10, 2026</div>
+        <div class="timeline-dot"></div>
+        <div class="changelog-card">
+          <div class="card-body">
+            <span class="badge">New</span>
+            <h2>For Hotels &amp; Venues</h2>
+            <ul class="feature-list">
+              <li>Bulk Booking Blast</li>
+              <li>Competitor Rate Tracker</li>
+              <li>Reputation Booster</li>
+              <li>Dynamic Pricing</li>
+              <li>Property Management Integration</li>
+              <li>Guest Messaging</li>
+              <li>Group Booking Manager</li>
+              <li>Sustainability Badge</li>
+              <li>Parking Management</li>
+              <li>Early Payouts</li>
+              <li>Upsell Engine</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="avatars">
+              <img src="https://i.pravatar.cc/150?img=3" alt="User" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jun 28, 2026</div>
+        <div class="timeline-dot"></div>
+        <div class="changelog-card">
+          <div class="card-body">
+            <span class="badge">Improvement</span>
+            <h2>For Logistics Partners</h2>
+            <ul class="feature-list">
+              <li>Route Listings</li>
+              <li>Bulk Ride Scheduling</li>
+              <li>Dynamic Route Optimization</li>
+              <li>Fleet Management Dashboard</li>
+              <li>Real-Time Traffic Alerts</li>
+              <li>Live GPS Tracking</li>
+              <li>Driver Scheduling</li>
+              <li>Driver Payments</li>
+              <li>Multi-Vehicle Management</li>
+              <li>Passenger Manifest</li>
+              <li>Multi-City Routing</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="avatars">
+              <img src="https://i.pravatar.cc/150?img=4" alt="User" />
+              <img src="https://i.pravatar.cc/150?img=5" alt="User" />
+              <img src="https://i.pravatar.cc/150?img=6" alt="User" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jun 15, 2026</div>
+        <div class="timeline-dot"></div>
+        <div class="changelog-card">
+          <div class="card-body">
+            <span class="badge">Fix</span>
+            <h2>For Attendees</h2>
+            <ul class="feature-list">
+              <li>All-In-One Checkout</li>
+              <li>Dynamic Travel Deals</li>
+              <li>Digital Wallet</li>
+              <li>Real-Time Event Alerts</li>
+              <li>Itinerary Builder</li>
+              <li>Merch Pre-Order</li>
+              <li>Loyalty Points</li>
+              <li>24/7 Concierge Chat</li>
+              <li>Cancellation Insurance</li>
+              <li>Group Travel Finder</li>
+              <li>Interactive Seat Maps</li>
+              <li>Event Highlight Reel</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="avatars">
+              <img src="https://i.pravatar.cc/150?img=7" alt="User" />
+              <img src="https://i.pravatar.cc/150?img=8" alt="User" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Single source of truth for the mobile menu — was previously two
+    // conflicting handlers (an inline onclick + a duplicate listener).
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    const openIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>`;
+    const closeIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>`;
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('translate-x-full');
+      const isOpen = !mobileMenu.classList.contains('translate-x-full');
+
+      menuBtn.innerHTML = isOpen ? closeIcon : openIcon;
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Mobile dropdown accordions (Solutions / Resources)
+    document.querySelectorAll('[data-dropdown-toggle]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const item = link.closest('.nav-item');
+        document.querySelectorAll('.nav-item.active').forEach((other) => {
+          if (other !== item) other.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
