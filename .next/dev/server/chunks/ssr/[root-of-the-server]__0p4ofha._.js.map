@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ADDIS/Documents/tixteeroadmap/roadmap/app/page.tsx"],"sourcesContent":["import { Sec1Hero } from \"@/components/originkit/ui/hero-23/sec1-hero\";\r\n\r\nexport default function Home() {\r\n  return <Sec1Hero />;\r\n}"],"names":["Home","Sec1Hero"],"mappings":";;;;;;;;;;;;AAEe,SAASA;IACtB,qBAAO,8OAACC;;;;;AACV"}}]
+}
