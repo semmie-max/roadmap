@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ADDIS/Documents/tixteeroadmap/roadmap/components/originkit/hero-23.css"],"sourcesContent":["/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@font-face {\n  font-family: \"Helvetica Neue\";\n  src: url(\"/originkit/hero-23/fonts/helvetica-neue-medium.ttf\")\n    format(\"truetype\");\n  font-weight: 400 700;\n  font-style: normal;\n  font-display: swap;\n}\n@keyframes hero-reveal {\n  from {\n    opacity: 0;\n    transform: translateY(12px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  @keyframes hero-reveal {\n    from {\n      opacity: 0;\n      transform: none;\n    }\n    to {\n      opacity: 1;\n      transform: none;\n    }\n  }\n}\n.hero-23 [class*=\"globe\"],\n.hero-23 .media-globe,\n.hero-23 canvas {\n  opacity: 1 !important;\n  visibility: visible !important;\n  animation: none !important;\n  animation-delay: 0s !important;\n  transform: none !important;\n}"],"names":[],"mappings":"AACA;;;;;;;;AAQA;;;;;;;;;;;;AAUA;EACE;;;;;;;;;;;;;AAWF"}}]
+}
